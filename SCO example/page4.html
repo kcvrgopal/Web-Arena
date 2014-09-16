@@ -1,0 +1,80 @@
+  <!doctype html>
+  <html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Untitled Document</title>
+    <script language="javascript">
+  function saveAndContinue()
+  {
+	  var res;
+	  if(document.getElementById("correct").checked)
+	  {
+		  res=1;
+	  }
+	  else
+	  {
+		  res = 0;
+	  }
+	var q = window.localStorage.setItem("s5",res);  
+	window.location.replace("survey.html");
+  }
+  </script>
+  </head>
+  
+  <body>
+  <table align="center" border="2">
+  <th bgcolor="#B5B4B4" colspan="3" align="center" valign="middle">
+  Question 4
+  </th>
+  <tr>
+  <td colspan="3" align="center" valign="middle">
+  Watch the video and answer the following question.
+  <br>
+  What is the source as mentioned in the video?
+  </td>
+  </tr>
+  <tr>
+  <td width="187" rowspan="2">
+  <input id="correct" type="radio" name="2.a" value="2.a" />
+  Nasa.gov
+  </td>
+  <td width="194" rowspan="2">
+   <input type="radio" name="2.b" value="2.b" />
+  Data.gov
+  </td>
+  <td rowspan="3">
+  <video width="320" height="240" controls>
+  <source src="nasa.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+  </td>
+  </tr>
+  <tr></tr>
+  <tr></tr>
+  <tr >
+  <td width="187" rowspan="2">
+   <input type="radio" name="2.c" value="2.c" />
+Facebook  </td>
+  
+  <td width="194" rowspan="2">
+   <input type="radio" name="2.d" value="2.d" />
+Twitter  </td>
+  </tr>
+  <tr></tr>
+  <tr></tr>
+  <tr>
+  <td rowspan="2">
+  <button onClick="saveAndContinue()" type="button">Submit & next question</button>
+  </td>
+  <td rowspan="2">
+   <button type="button">Cancel & clear selection</button>
+  </td>
+  </tr>
+  </table>
+  </body>
+  </html>
+  
+  
+  
+  </body>
+  </html>

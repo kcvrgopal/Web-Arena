@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<script language="javascript">
+function closeIt()
+{
+	window.open('','self','');
+	window.close();	
+}
+function retrieve()
+{
+	var localstorage = window.localStorage;
+var q1 = parseInt(localstorage.getItem("s1"));
+console.log(q2);
+var q2 = parseInt(localstorage.getItem("s2"));
+console.log(q2);
+var q3 = parseInt(localstorage.getItem("s3"));
+var q4 = parseInt(localstorage.getItem("s4"));
+console.log(q5);
+var q5 = parseInt(localstorage.getItem("s5"));
+console.log(q5);
+var quant = q1+q2;
+console.log(q1+q2);
+console.log(quant);
+var read = q3+q4;
+var av = q5;	
+document.getElementById("q.c").innerHTML=quant;
+document.getElementById("r.c").innerHTML=read;
+document.getElementById("av.c").innerHTML=av;
+}
+</script>
+</head>
+
+<body onLoad="retrieve()">
+  <table border="1" width="420">
+    <th bgcolor="#B5B4B4" colspan="3" align="center" valign="middle">
+  Score Card</th>
+  
+  <tr>
+  <td>
+  <table align="left" width="400"  height="200">
+
+  <tr>
+  <td>
+<details>
+<summary>
+Quantitative
+</summary>
+Number of questions answered: <label id="q.a">2</label><br>
+Number of correct answers: 
+Score: <label id="q.c"></label>
+</details>
+
+<details>
+<summary>
+Reading Section
+</summary>
+Number of questions answered: <label id="r.a">2</label><br>
+Number of correct answers: <label id="r.c"></label>
+Score: 
+</details>
+
+<details>
+<summary>
+Audio/Video Section
+</summary>
+Number of questions answered: <label id="av.a">1</label><br>
+Number of correct answers: <label id="av.c"></label>
+Score: 
+</details>
+</td>
+</tr>
+</table>
+<tr>
+<td align="center">
+Thank you!!!
+</td>
+</tr>
+<tr>
+<td align="center">
+<button id="finish" onClick="closeIt()">Finish</button>
+</td>
+</tr>
+</th>
+</body>
+</html>

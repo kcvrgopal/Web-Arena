@@ -1,0 +1,81 @@
+  <!doctype html>
+  <html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Untitled Document</title>
+  <script language="javascript">
+  function clearStore()
+  {
+	window.localStorage.clear();  
+  }
+  function saveAndContinue()
+  {
+	  var res;
+	  if(document.getElementById("correct").checked)
+	  {
+		  res=1;
+	  }
+	  else
+	  {
+		  res = 0;
+	  }
+	var q = window.localStorage.setItem("s1",res);  
+	window.location.replace("page2.html");
+  }
+  </script>
+  </head>
+  
+  <body onLoad="clearStore()">
+  <table align="center" border="2">
+  <th bgcolor="#B5B4B4" colspan="3" align="center" valign="middle">
+  Question 1
+  </th>
+  <tr>
+  <td colspan="3" align="center" valign="middle">
+  Given points (x1,y1) and (x2,y2) select the formula to find the equation of the given line
+  </td>
+  </tr>
+  <tr>
+  <td width="187" rowspan="2">
+  <input type="radio" id="correct" name="1.a" value="1.a" />
+  <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mi>m</mi><mi>x</mi><mo>+</mo><mi>b</mi></math>
+  </td>
+  <td width="194" rowspan="2">
+   <input type="radio" name="1.b" value="1.b" />
+  <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mfenced><mrow><mi>x</mi><mo>-</mo><mi>h</mi></mrow></mfenced><mn>2</mn></msup><mo>+</mo><msup><mfenced><mrow><mi>y</mi><mo>-</mo><mi>k</mi></mrow></mfenced><mn>2</mn></msup><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup></math>
+  </td>
+  <td width="170" rowspan="4">
+  Image Goes here
+  </td>
+  </tr>
+  <tr></tr>
+  <tr></tr>
+  <tr >
+  <td width="187" rowspan="2">
+   <input type="radio" name="1.c" value="1.c" />
+  <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>-</mo><msub><mi>y</mi><mn>1</mn></msub><mo>=</mo><mi>m</mi><mfenced><mrow><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfenced></math>
+  </td>
+  
+  <td width="194" rowspan="2">
+   <input type="radio" name="1.d" value="1.d" />
+  <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>-</mo><msub><mi>y</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>-</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac><mfenced><mrow><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></mfenced></math>
+  </td>
+  </tr>
+  <tr></tr>
+  <tr></tr>
+  <tr>
+  <td rowspan="2">
+  <button type="button" onClick="saveAndContinue()">Submit & next question</button>
+  </td>
+  <td rowspan="2">
+   <button type="button">Cancel & clear selection</button>
+  </td>
+  </tr>
+  </table>
+  </body>
+  </html>
+  
+  
+  
+  </body>
+  </html>

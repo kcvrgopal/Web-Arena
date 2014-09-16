@@ -1,0 +1,74 @@
+  <!doctype html>
+  <html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Untitled Document</title>
+    <script language="javascript">
+  function saveAndContinue()
+  {
+	  var res;
+	  if(document.getElementById("correct").checked)
+	  {
+		  res=1;
+	  }
+	  else
+	  {
+		  res = 0;
+	  }
+	var q = window.localStorage.setItem("s2",res);  
+	window.location.replace("page3.html");
+  }
+  </script>
+  </head>
+  
+  <body>
+  <table align="center" border="2">
+  <th bgcolor="#B5B4B4" colspan="2" align="center" valign="middle">
+  Question 2
+  </th>
+  <tr>
+  <td colspan="2" align="center" valign="middle">
+  Select the cosine theorem formula
+  </td>
+  </tr>
+  <tr>
+  <td width="187" rowspan="2">
+  <input type="radio" id="correct" name="2.a" value="2.a" />
+  <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>cos</mi><mfenced><mrow><mi>&#945;</mi><mo>&#177;</mo><mi>&#946;</mi></mrow></mfenced><mo>=</mo><mi>cos</mi><mi>&#945;</mi><mi>cos</mi><mi>&#946;</mi><mo>&#8723;</mo><mi>sin</mi><mi>&#945;</mi><mi>sin</mi><mi>&#946;</mi></math>
+  </td>
+  <td width="194" rowspan="2">
+   <input type="radio" name="2.b" value="2.b" />
+  <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>sin</mi><mfenced><mrow><mi>&#945;</mi><mo>&#177;</mo><mi>&#946;</mi></mrow></mfenced><mo>=</mo><mi>sin</mi><mi>&#945;</mi><mi>cos</mi><mi>&#946;</mi><mo>&#177;</mo><mi>sin</mi><mi>&#945;</mi><mi>cos</mi><mi>&#946;</mi></math>
+  </td>
+  </tr>
+  <tr></tr>
+  <tr></tr>
+  <tr >
+  <td width="187" rowspan="2">
+   <input type="radio" name="2.c" value="2.c" />
+ <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>sin</mi><mi>&#945;</mi><mo>+</mo><mi>sin</mi><mi>&#946;</mi><mo>=</mo><mn>2</mn><mi>sin</mi><mfenced><mfrac><mrow><mi>&#945;</mi><mo>+</mo><mi>&#946;</mi></mrow><mn>2</mn></mfrac></mfenced><mi>cos</mi><mfenced><mfrac><mrow><mi>&#945;</mi><mo>-</mo><mi>&#946;</mi></mrow><mn>2</mn></mfrac></mfenced></math>
+  </td>
+  
+  <td width="194" rowspan="2">
+   <input type="radio" name="2.d" value="2.d" />
+<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>sin</mi><mi>&#945;</mi><mo>-</mo><mi>sin</mi><mi>&#946;</mi><mo>=</mo><mi>cos</mi><mfenced><mfrac><mrow><mi>&#945;</mi><mo>+</mo><mi>&#946;</mi></mrow><mn>2</mn></mfrac></mfenced><mi>sin</mi><mfenced><mfrac><mrow><mi>&#945;</mi><mo>-</mo><mi>&#946;</mi></mrow><mn>2</mn></mfrac></mfenced></math>
+  </td>
+  </tr>
+  <tr></tr>
+  <tr></tr>
+  <tr>
+  <td rowspan="2">
+  <button type="button" onClick="saveAndContinue()">Submit & next question</button>
+  </td>
+  <td rowspan="2">
+   <button type="button">Cancel & clear selection</button>
+  </td>
+  </tr>
+  </table>
+  </body>
+  </html>
+  
+  
+  
+  </body>
+  </html>
