@@ -21,7 +21,7 @@ var q4 = parseInt(localstorage.getItem("s4"));
 console.log(q5);
 var q5 = parseInt(localstorage.getItem("s5"));
 console.log(q5);
-var quant = q1+q2;
+var quant = (q1+q2);
 console.log(q1+q2);
 console.log(quant);
 var read = q3+q4;
@@ -29,12 +29,15 @@ var av = q5;
 document.getElementById("q.c").innerHTML=quant;
 document.getElementById("r.c").innerHTML=read;
 document.getElementById("av.c").innerHTML=av;
+document.getElementById("s1").innerHTML=quant*20;
+document.getElementById("s2").innerHTML=read*20;
+document.getElementById("s3").innerHTML=av*20;
 }
 </script>
 </head>
 
 <body onLoad="retrieve()">
-  <table border="1" width="420">
+  <table align="center" border="1" width="420">
     <th bgcolor="#B5B4B4" colspan="3" align="center" valign="middle">
   Score Card</th>
   
@@ -49,8 +52,8 @@ document.getElementById("av.c").innerHTML=av;
 Quantitative
 </summary>
 Number of questions answered: <label id="q.a">2</label><br>
-Number of correct answers: 
-Score: <label id="q.c"></label>
+Number of correct answers: <label id="q.c"></label>
+Score: <label id="s1"></label>
 </details>
 
 <details>
@@ -59,7 +62,7 @@ Reading Section
 </summary>
 Number of questions answered: <label id="r.a">2</label><br>
 Number of correct answers: <label id="r.c"></label>
-Score: 
+Score: <label id="s2"></label>
 </details>
 
 <details>
@@ -68,7 +71,7 @@ Audio/Video Section
 </summary>
 Number of questions answered: <label id="av.a">1</label><br>
 Number of correct answers: <label id="av.c"></label>
-Score: 
+Score: <label id="s3"></label>
 </details>
 </td>
 </tr>

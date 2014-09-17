@@ -3,12 +3,36 @@
   <head>
   <meta charset="UTF-8">
   <title>Untitled Document</title>
-    <script language="javascript">
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    <script>
+	function blank1()
+	{
+		console.log("Clicked");
+		$('#one').attr('disabled', false);
+		document.getElementById("two").style.display='none';
+		document.getElementById("one").style.display='block';
+	}
+	function blank2()
+	{
+		console.log("Clicked2");
+		document.getElementById("one").style.display='none';
+		document.getElementById("two").style.display='block';
+	}
+	</script>
+	<script language="javascript">
+	function changeIt(val, mark)
+	{
+		console.log(val);
+		var item = "mark"+mark;
+		console.log("mark"+mark);
+		document.getElementById(item).innerHTML=val;	
+	}
   function saveAndContinue()
   {
+	  
 	  var res1;
-	  /*
-	  if(document.getElementById("correct1").checked)
+if(document.getElementById("correct1").checked)
 	  {
 		  res1=1;
 	  }
@@ -20,13 +44,13 @@
 		  var res2;
 	  if(document.getElementById("correct2").checked)
 	  {
-		  res1=1;
+		  res2=1;
 	  }
 	  else
 	  {
-		  res1 = 0;
+		  res2 = 0;
 	  }
-	var q = window.localStorage.setItem("s3",res2);  */
+	var q = window.localStorage.setItem("s4",res2);  
 	window.location.replace("page4.html");
   }
   </script>
@@ -45,37 +69,30 @@
   <tr>
   <td></td>
   <td colspan="3" align="justified" valign="middle">
-  Twitter wants more cash. The company announced two <mark onClick="">_____</mark> million debt offerings in a filing today, each with a potential $100 increase provided that the sales are oversubscribed. Assuming full tip, including the $100 million boosters, <mark onClick="">_____</mark> will raise up to $1.5 billion with the two offerings.
+  Twitter wants more cash. The company announced two <div onClick="blank1()"><mark><label id="mark1">_____</label></mark> </div> million debt offerings in a filing today, each with a potential $100 increase provided that the sales are oversubscribed. Assuming full tip, including the $100 million boosters, <div onClick="blank2()"><mark id="mark2">_____</mark></div> will raise up to $1.5 billion with the two offerings.
   </td>
   </tr><tr >
-    <td width="187">
-   <input type="radio" name="3.1.a" value="3.1.a" />
-Facebook  </td>
-  
-  <td width="194">
-   <input type="radio" name="3.1.b" value="3.1.b" />
-Twitter  </td>
-  </tr>
-  <tr></tr>
   <tr></tr>
   <td width="187">
-   <input type="radio" name="3.2.a" value="3.2.a" />
-Facebook  </td>
+  <div hidden="true" id="one">
+   <input onChange="changeIt(650,1)" type="radio" name="correct1" id="correct1" />
+$650  <br>
+   <input onChange="changeIt(550,1)" type="radio" name="3.1.b" id="3.1.b" />
+$550  <br>
+   <input onChange="changeIt(450,1)" type="radio" name="3.1.c" id="3.1.c" />
+$450 </div></td>
+
   
   <td width="194">
-   <input type="radio" name="3.2.b" value="3.2.b" />
-Twitter  </td>
-  </tr>
-  <tr></tr>
-  <tr></tr>
-  <tr >
-    <td width="187">
-   <input type="radio" name="3.3.a" value="3.3.a" />
-Facebook  </td>
-  
-  <td width="194">
-   <input type="radio" name="3.3.b" value="3.3.b" />
-Twitter  </td>
+  <div hidden="true" id="two">
+   <input onChange="changeIt('Twitter',2)" type="radio" name="correct2" id="correct2" />
+Twitter  <br>
+   <input onChange="changeIt('Google',2)" type="radio" name="3.2.b" id="3.2.b" />
+Google <br>
+   <input onChange="changeIt('Facebook',2)" type="radio" name="3.2.c" id="3.2.c" />
+Facebook 
+</div>
+</td>
   </tr>
   <tr></tr>
   <tr></tr>
