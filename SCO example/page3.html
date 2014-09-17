@@ -21,6 +21,11 @@
 	}
 	</script>
 	<script language="javascript">
+	function clearSelection()
+  {
+	  window.location.reload();
+  }
+  
 	function changeIt(val, mark)
 	{
 		console.log(val);
@@ -101,7 +106,7 @@ Facebook
   <button onClick="saveAndContinue()" type="button">Submit & next question</button>
   </td>
   <td>
-   <button type="button">Cancel & clear selection</button>
+   <button onClick="clearSelection()" type="button">Cancel & clear selection</button>
   </td>
   </tr>
   </table>

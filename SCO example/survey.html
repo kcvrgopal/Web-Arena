@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <title>Untitled Document</title>
   <script language="javascript">
+  function clearSelection()
+  {
+	  window.location.reload();
+  }
+  
   function saveAndContinue()
   {
 	window.location.replace("summary.html")
@@ -59,7 +64,7 @@
   <button onClick="saveAndContinue()" type="button">Submit & next question</button>
   </td>
   <td colspan="2">
-<button type="button">Cancel & clear selection</button>  </td>
+<button onClick="clearSelection()" type="button">Cancel & clear selection</button>  </td>
   </tr>
   </table>
   </body>
