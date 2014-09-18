@@ -2,7 +2,7 @@
   <html>
   <head>
   <meta charset="UTF-8">
-  <title>Untitled Document</title>
+  <title>Quiz</title>
     <script language="javascript">
 	function clearSelection()
   {
@@ -12,7 +12,8 @@
   function saveAndContinue()
   {
 	  var res;
-	  if(document.getElementById("correct").checked)
+	  var a= document.getElementById('correct').getAttribute('data-q2');
+	  if((document.getElementById(a)).checked)
 	  {
 		  res=1;
 	  }
@@ -27,10 +28,11 @@
   </head>
   
   <body>
-  <table align="center" border="2">
+  <table align="center" frame="box">
+  <header>
   <th bgcolor="#B5B4B4" colspan="2" align="center" valign="middle">
   Question 2
-  </th>
+  </th></header>
   <tr>
   <td colspan="2" align="center" valign="middle">
   Select the cosine theorem formula
@@ -38,7 +40,7 @@
   </tr>
   <tr>
   <td width="187" rowspan="2">
-  <input type="radio" id="correct" name="2.a" value="2.a" />
+  <input type="radio" data-q2="correct" id="correct" name="2.a" value="2.a" />
   <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>cos</mi><mfenced><mrow><mi>&#945;</mi><mo>&#177;</mo><mi>&#946;</mi></mrow></mfenced><mo>=</mo><mi>cos</mi><mi>&#945;</mi><mi>cos</mi><mi>&#946;</mi><mo>&#8723;</mo><mi>sin</mi><mi>&#945;</mi><mi>sin</mi><mi>&#946;</mi></math>
   </td>
   <td width="194" rowspan="2">
@@ -70,6 +72,8 @@
   </td>
   </tr>
   </table>
+  <br>
+    <footer align="center">Sample Quiz</footer>
   </body>
   </html>
   

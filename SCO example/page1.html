@@ -2,7 +2,7 @@
   <html>
   <head>
   <meta charset="UTF-8">
-  <title>Untitled Document</title>
+  <title>Quiz</title>
   <script language="javascript">
   function clearStore()
   {
@@ -16,8 +16,9 @@
   
   function saveAndContinue()
   {
-	  var res;
-	  if(document.getElementById("correct").checked)
+	  var res;	  
+	  var a= document.getElementById('correct').getAttribute('data-q1');
+	  if((document.getElementById(a)).checked)
 	  {
 		  res=1;
 	  }
@@ -32,10 +33,10 @@
   </head>
   
   <body onLoad="clearStore()">
-  <table align="center" border="2">
-  <th bgcolor="#B5B4B4" colspan="3" align="center" valign="middle">
+  <table align="center" frame="box">
+  <header><th bgcolor="#B5B4B4" colspan="3" align="center" valign="middle">
   Question 1
-  </th>
+  </th></header>
   <tr>
   <td colspan="3" align="center" valign="middle">
   Given points (x1,y1) and (x2,y2) select the formula to find the equation of the given line
@@ -55,7 +56,6 @@
   </td>
   </tr>
   <tr></tr>
-  <tr></tr>
   <tr >
   <td width="187" rowspan="2">
    <input type="radio" name="1.c" value="1.c" />
@@ -63,7 +63,7 @@
   </td>
   
   <td width="194" rowspan="2">
-   <input type="radio" id="correct" name="1.d" value="1.d" />
+   <input type="radio" data-q1="correct"  id="correct" name="1.d" value="1.d" />
 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>-</mo><msub><mi>y</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>-</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo></math>
   </td>
   </tr>
@@ -78,6 +78,8 @@
   </td>
   </tr>
   </table>
+  <br>
+  <footer align="center">Sample Quiz</footer>
   </body>
   </html>
   

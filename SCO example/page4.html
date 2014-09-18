@@ -2,7 +2,7 @@
   <html>
   <head>
   <meta charset="UTF-8">
-  <title>Untitled Document</title>
+  <title>Quiz</title>
     <script language="javascript">
 	function clearSelection()
   {
@@ -12,7 +12,8 @@
   function saveAndContinue()
   {
 	  var res;
-	  if(document.getElementById("correct").checked)
+	  	  var a= document.getElementById('correct').getAttribute('data-q5');
+	  if((document.getElementById(a)).checked)
 	  {
 		  res=1;
 	  }
@@ -27,10 +28,11 @@
   </head>
   
   <body>
-  <table align="center" border="2">
+  <table align="center" frame="box">
+  <header>
   <th bgcolor="#B5B4B4" colspan="3" align="center" valign="middle">
   Question 4
-  </th>
+  </th></header>
   <tr>
   <td colspan="3" align="center" valign="middle">
   Watch the video and answer the following question.
@@ -40,7 +42,7 @@
   </tr>
   <tr>
   <td width="187" rowspan="2">
-  <input id="correct" type="radio" name="2.a" value="2.a" />
+  <input data-q5="correct" id="correct" type="radio" name="2.a" value="2.a" />
   Nasa.gov
   </td>
   <td width="194" rowspan="2">
@@ -54,7 +56,6 @@
 </video>
   </td>
   </tr>
-  <tr></tr>
   <tr></tr>
   <tr >
   <td width="187" rowspan="2">
@@ -76,6 +77,9 @@ Twitter  </td>
   </td>
   </tr>
   </table>
+  <br>
+ 
+    <footer align="center">Sample Quiz</footer>
   </body>
   </html>
   

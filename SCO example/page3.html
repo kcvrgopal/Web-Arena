@@ -2,7 +2,7 @@
   <html>
   <head>
   <meta charset="UTF-8">
-  <title>Untitled Document</title>
+  <title>Quiz</title>
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
     <script>
@@ -37,7 +37,8 @@
   {
 	  
 	  var res1;
-if(document.getElementById("correct1").checked)
+	  var a= document.getElementById('correct1').getAttribute('data-q3');
+	  if((document.getElementById(a)).checked)
 	  {
 		  res1=1;
 	  }
@@ -46,8 +47,9 @@ if(document.getElementById("correct1").checked)
 		  res1 = 0;
 	  }
 	var q = window.localStorage.setItem("s3",res1);  
-		  var res2;
-	  if(document.getElementById("correct2").checked)
+		  var res2;	  
+	  var a= document.getElementById('correct2').getAttribute('data-q4');
+	  if((document.getElementById(a)).checked)
 	  {
 		  res2=1;
 	  }
@@ -62,10 +64,11 @@ if(document.getElementById("correct1").checked)
   </head>
   
   <body>
-  <table align="center" border="2">
+  <table align="center" frame="box">
+  <header>
   <th bgcolor="#B5B4B4" colspan="4" align="center" valign="middle">
   Question 3
-  </th>
+  </th></header>
   <tr>
   <td colspan="4" align="left" valign="middle">
   As per the latest twitter news, complete the article snippet given by selecting appropriate choices for the blanks.
@@ -80,7 +83,7 @@ if(document.getElementById("correct1").checked)
   <tr></tr>
   <td width="187">
   <div hidden="true" id="one">
-   <input onChange="changeIt(650,1)" type="radio" name="correct1" id="correct1" />
+   <input onChange="changeIt(650,1)" type="radio" data-q3="correct1" name="correct1" id="correct1" />
 $650  <br>
    <input onChange="changeIt(550,1)" type="radio" name="3.1.b" id="3.1.b" />
 $550  <br>
@@ -90,7 +93,7 @@ $450 </div></td>
   
   <td width="194">
   <div hidden="true" id="two">
-   <input onChange="changeIt('Twitter',2)" type="radio" name="correct2" id="correct2" />
+   <input onChange="changeIt('Twitter',2)" type="radio" data-q4="correct2" name="correct2" id="correct2" />
 Twitter  <br>
    <input onChange="changeIt('Google',2)" type="radio" name="3.2.b" id="3.2.b" />
 Google <br>
@@ -110,6 +113,8 @@ Facebook
   </td>
   </tr>
   </table>
+  <br>
+    <footer align="center">Sample Quiz</footer>
   </body>
   </html>
   

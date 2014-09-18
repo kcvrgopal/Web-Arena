@@ -17,10 +17,11 @@
   </head>
   
   <body>
-  <table align="center" border="2">
+  <table align="center" frame="box">
+  <header>
   <th bgcolor="#B5B4B4" colspan="4" align="center" valign="middle">
   Survey
-  </th>
+  </th></header>
   <tr>
   <td colspan="4" align="center" valign="middle">
   How did you like the center
@@ -42,21 +43,29 @@
   </td>
   
   <td>
-  <select><option name="c1">San jose</option>
-  <option name="c2">San fransisco</option>
-  <option name="c3">Mountain View</option>
-  <option name="c4">Palo Alto</option>
-  <option name="c5">Sunnyvale</option></select>
+  <input list="location">
+
+<datalist id="location">
+  <option value="San jose">
+  <option value="San fransisco">
+  <option value="Mountain View">
+  <option value="Palo Alto">
+  <option value="Sunnyvale">
+</datalist>
   </td>
   <td>
   Room Number#:
   </td>
   <td>
-  <select><option name="r1">Room 337</option>
-  <option name="r2">Room 226</option>
-  <option name="r3">Room 119</option>
-  <option name="r4">Room 410</option>
-  <option name="r5">Room 341</option></select>
+    <input list="room">
+
+<datalist id="room">
+  <option value="Room 337">
+  <option value="Room 226">
+  <option value="Room 119">
+  <option value="Room 410">
+  <option value="Room 341">
+</datalist>
   </td>
   </tr>
   <tr>
@@ -67,6 +76,8 @@
 <button onClick="clearSelection()" type="button">Cancel & clear selection</button>  </td>
   </tr>
   </table>
+  <br>
+    <footer align="center">Sample Quiz</footer>
   </body>
   </html>
   
