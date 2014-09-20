@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Registration</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function()
+{
+	$('#pwd').keyup(function()
+	{
+		$('#result').html(checkStrength($('#pwd').val()))
+	})	
+
+	function checkStrength(pwd)
+	{
+			var strength = 0
+			if(pwd.length<=24)
+			{
+		if (pwd.length < 6) { 
+			$('#result').removeClass()
+			$('#result').addClass('short')
+			updateProgress(pwd.length * 3)
+			return 'Too short' 
+		}
+		if (pwd.length > 7) strength += 1
+		if (pwd.match(/(.*[A-Z].*[A-Z].*[A-Z])/))  strength += 3
+		if (pwd.match(/(.*[a-z].*[a-z])/))  strength += 2
+		if (pwd.match(/(.*[!,%,&,@,#,$,^,*,?,_,~]{6,})/))  strength += 3
+		else if(pwd.match(/(.*[!,%,&,@,#,$,^,*,?,_,~]{3,5})/))  strength += 2
+		else if(pwd.match(/(.*[!,%,&,@,#,$,^,*,?,_,~]{2})/))  strength += 1
+		console.log(strength)
+		
+		if (strength < 7 )
+		{
+			$('#result').removeClass()
+			$('#result').addClass('weak')
+			updateProgress(25)
+			return 'Weak'			
+		}
+		else if (strength == 7 )
+		{
+			$('#result').removeClass()
+			$('#result').addClass('normal')
+			updateProgress(50)
+				return 'Normal'		
+		}
+		else if (strength == 8 )
+		{
+			$('#result').removeClass()
+			$('#result').addClass('good')
+			updateProgress(75)
+				return 'Good'		
+		}
+		else if(strength == 9)
+		{
+			$('#result').removeClass()
+			$('#result').addClass('strong')
+			updateProgress(100)
+			return 'Strong'
+		}
+			}
+			else
+			{
+				updateProgress(0);
+				return 'error'	
+			}
+	}
+	
+	function updateProgress(percent)
+	{
+		document.getElementById('progress').value=parseInt(percent);
+	}
+
+});
+</script>
+</head>
+
+<body>
+<table>
+<tr>
+<td align="left" style="width: 200px;">
+First Name
+</td>
+<td align="left">
+<input type="text" id="fn" name="fn"/>
+</td>
+</tr>
+<tr>
+<td align="left"  style="width: 200px;">
+Last Name
+</td>
+<td align="left">
+<input type="text" id="ln" name="ln"/>
+</td>
+</tr>
+<tr>
+<td align="left"  style="width: 200px;">
+Email
+</td>
+<td align="left">
+<input type="email" id="email" name="email" />
+</td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+Password
+</td>
+<td align="left">
+<input type="password" id="pwd" name="pwd"/>
+<span id="result"></span>
+</td>
+<td align="justify">
+<progress id="progress" value="0" max="100"/>
+</td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+Confirm Password
+</td>
+<td align="left">
+<input type="password" id="cpwd" name="cpwd"/></td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+D.O.B
+</td>
+<td align="left">
+<input type="date" id="date" name="date"/>
+</td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+D.O.B with time
+</td>
+<td align="left">
+<input type="datetime" id="datetime" name="datetime"/>
+</td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+Local D.O.B
+</td>
+<td align="left">
+<input type="datetime-local" id="local" name="local"/>
+</td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+SSN
+</td>
+<td align="left">
+<input type="text" id="ssn" name="ssn" pattern="\d{3}[\-]\d{2}[\-]\d{4}"/>
+</td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+Phone
+</td>
+<td align="left">
+<input type="text" id="phone" name="phone" pattern="\d{3}[\-]\d{3}[\-]\d{4}"/>
+</td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+Credit Card Number
+</td>
+<td align="left">
+<input type="text" id="phone" name="phone" pattern="\d{4}[\-]\d{4}[\-]\d{4}[\-]\d{4}"/>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<button id="go" name="go" onClick="go">Create</button>
+</td>
+</tr>
+</table>
+</body>
+
+</html>
