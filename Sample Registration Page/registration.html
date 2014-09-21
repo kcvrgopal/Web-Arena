@@ -12,16 +12,15 @@ $(document).ready(function()
 		$('#result').html(checkStrength($('#pwd').val()))
 	})	
 
+
 	function checkStrength(pwd)
 	{
 			var strength = 0
 			if(pwd.length<=24)
 			{
 		if (pwd.length < 6) { 
-			$('#result').removeClass()
-			$('#result').addClass('short')
 			updateProgress(pwd.length * 3)
-			return 'Too short' 
+			return
 		}
 		if (pwd.length > 7) strength += 1
 		if (pwd.match(/(.*[A-Z].*[A-Z].*[A-Z])/))  strength += 3
@@ -63,7 +62,7 @@ $(document).ready(function()
 			else
 			{
 				updateProgress(0);
-				return 'error'	
+				return 'Password Limit Exeeded. Try again'	
 			}
 	}
 	
@@ -74,16 +73,87 @@ $(document).ready(function()
 
 });
 </script>
+<script language="javascript">
+
+	function checkPasswordMatch()
+	{
+		console.log("hereee");
+		console.log($('#pwd').val()+"--"+$('#cpwd').val());
+		if($('#pwd').val()!=$('#cpwd').val())
+		{
+			console.log("No match");
+				$('#cresult').html("password do not match")
+		}
+		else
+		{
+			$('#cresult').html("")
+		}
+	}
+	
+function goNow()
+	{
+		console.log("called");		
+		var firstName = document.getElementById('fn').value;
+		var lastName = document.getElementById('ln').value;
+		var email = document.getElementById('email').value;
+		var phone = document.getElementById('phone').value;
+		var ssn = document.getElementById('ssn').value;
+		var dob = document.getElementById('date').value;
+		var dobtime = document.getElementById('datetime').value;
+		var localdob = document.getElementById('local').value;
+		var ccnumber = document.getElementById('cc').value;
+		if(ccnumber==""||firstName == "" || lastName==""||email==""||phone==""||ssn==""||dobtime=="")
+		{
+			alert("All fields are Mandatory. Please enter all the values and try again");
+			return;
+		}
+		var regex = new RegExp("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$");
+	  if(!regex.test(email))
+	  {
+		  alert("Please re-enter the email in the correctformat");
+		  return;
+	  }
+		regex = new RegExp("^\\d{3}-\\d{2}-\\d{4}$");
+	  if(!regex.test(ssn))
+	  {
+		  alert("Please re-enter the ssn in the correctformat");
+		  return;
+	  }
+	  regex = new RegExp("^\\d{3}-\\d{3}-\\d{4}$");
+	  if(!regex.test(phone))
+	  {
+		  alert("Please re-enter the phone number in the correctformat");
+		  return;
+	  }
+	  regex = new RegExp("^\\d{4}-\\d{4}-\\d{4}-\\d{4}$");
+	  if(!regex.test(ccnumber))
+	  {
+		  alert("Please re-enter the Credit card number in the correctformat");
+		  return;
+	  }
+		window.localStorage.setItem('firstName',firstName);
+		window.localStorage.setItem('lastName',lastName);
+		window.localStorage.setItem('email',email);
+		window.localStorage.setItem('phone',phone);
+		window.localStorage.setItem('ssn',ssn);
+		window.localStorage.setItem('dob',dob);
+		window.localStorage.setItem('dobtime',dobtime);
+		window.localStorage.setItem('localdob',localdob);
+		window.localStorage.setItem('ccnumber',ccnumber);
+		alert("Registration Successful")
+	}
+	</script>
 </head>
 
 <body>
-<table>
+<h1 align="center">Registration</h1>
+<table align="center">
 <tr>
 <td align="left" style="width: 200px;">
 First Name
 </td>
 <td align="left">
-<input type="text" id="fn" name="fn"/>
+<input type="text" id="fn" name="fn" placeholder="first Name"/>
 </td>
 </tr>
 <tr>
@@ -91,7 +161,7 @@ First Name
 Last Name
 </td>
 <td align="left">
-<input type="text" id="ln" name="ln"/>
+<input type="text" id="ln" name="ln" placeholder="Last Name"/>
 </td>
 </tr>
 <tr>
@@ -99,7 +169,7 @@ Last Name
 Email
 </td>
 <td align="left">
-<input type="email" id="email" name="email" />
+<input type="email" id="email" name="email" placeholder="abc@xyz.com"  style="width: 140px;"/>
 </td>
 </tr>
 <tr>
@@ -111,7 +181,8 @@ Password
 <span id="result"></span>
 </td>
 <td align="justify">
-<progress id="progress" value="0" max="100"/>
+<span>
+<progress id="progress" value="0" max="100"/></span>
 </td>
 </tr>
 <tr>
@@ -119,7 +190,9 @@ Password
 Confirm Password
 </td>
 <td align="left">
-<input type="password" id="cpwd" name="cpwd"/></td>
+<input type="password" id="cpwd" name="cpwd" onChange="checkPasswordMatch()"/>
+<br>
+<span id="cresult"></span></td>
 </tr>
 <tr>
 <td align="left" style="width: 200px;">
@@ -150,7 +223,7 @@ Local D.O.B
 SSN
 </td>
 <td align="left">
-<input type="text" id="ssn" name="ssn" pattern="\d{3}[\-]\d{2}[\-]\d{4}"/>
+<input type="text" id="ssn" name="ssn" pattern="^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$" placeholder="111-22-3333"/>
 </td>
 </tr>
 <tr>
@@ -158,7 +231,7 @@ SSN
 Phone
 </td>
 <td align="left">
-<input type="text" id="phone" name="phone" pattern="\d{3}[\-]\d{3}[\-]\d{4}"/>
+<input type="text" id="phone" name="phone" pattern="\d{3}[\-]\d{3}[\-]\d{4}" placeholder="111-222-3333"/>
 </td>
 </tr>
 <tr>
@@ -166,12 +239,12 @@ Phone
 Credit Card Number
 </td>
 <td align="left">
-<input type="text" id="phone" name="phone" pattern="\d{4}[\-]\d{4}[\-]\d{4}[\-]\d{4}"/>
+<input type="text" id="cc" name="cc" pattern="\d{4}[\-]\d{4}[\-]\d{4}[\-]\d{4}" style="width: 140px;" placeholder="1111-2222-3333-4444"/>
 </td>
 </tr>
 <tr>
 <td colspan="2">
-<button id="go" name="go" onClick="go">Create</button>
+<button id="goNow" name="goNow" onClick="goNow()">Create</button>
 </td>
 </tr>
 </table>
