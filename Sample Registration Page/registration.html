@@ -4,9 +4,14 @@
 <meta charset="UTF-8">
 <title>Registration</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script>
+<script src="modernizr.js"></script><script>
 $(document).ready(function()
 {
+	if (Modernizr.localstorage) {
+  alert("LocalStorage available");
+} else {
+  alert("LocalStorage not available");
+}
 	$('#pwd').keyup(function()
 	{
 		$('#result').html(checkStrength($('#pwd').val()))
@@ -102,7 +107,7 @@ function goNow()
 		var dobtime = document.getElementById('datetime').value;
 		var localdob = document.getElementById('local').value;
 		var ccnumber = document.getElementById('cc').value;
-		if(ccnumber==""||firstName == "" || lastName==""||email==""||phone==""||ssn==""||dobtime=="")
+		/*if(ccnumber==""||firstName == "" || lastName==""||email==""||phone==""||ssn==""||dobtime=="")
 		{
 			alert("All fields are Mandatory. Please enter all the values and try again");
 			return;
@@ -130,7 +135,7 @@ function goNow()
 	  {
 		  alert("Please re-enter the Credit card number in the correctformat");
 		  return;
-	  }
+	  }*/
 		window.localStorage.setItem('firstName',firstName);
 		window.localStorage.setItem('lastName',lastName);
 		window.localStorage.setItem('email',email);
@@ -147,13 +152,14 @@ function goNow()
 
 <body>
 <h1 align="center">Registration</h1>
+<form id="reg">
 <table align="center">
 <tr>
 <td align="left" style="width: 200px;">
 First Name
 </td>
 <td align="left">
-<input type="text" id="fn" name="fn" placeholder="first Name"/>
+<input type="text" id="fn" name="fn" placeholder="first Name" required autofocus/>
 </td>
 </tr>
 <tr>
@@ -161,7 +167,7 @@ First Name
 Last Name
 </td>
 <td align="left">
-<input type="text" id="ln" name="ln" placeholder="Last Name"/>
+<input type="text" id="ln" name="ln" placeholder="Last Name" required/>
 </td>
 </tr>
 <tr>
@@ -169,7 +175,7 @@ Last Name
 Email
 </td>
 <td align="left">
-<input type="email" id="email" name="email" placeholder="abc@xyz.com"  style="width: 140px;"/>
+<input type="email" id="email" name="email" placeholder="abc@xyz.com"  style="width: 140px;" required/>
 </td>
 </tr>
 <tr>
@@ -177,7 +183,8 @@ Email
 Password
 </td>
 <td align="left">
-<input type="password" id="pwd" name="pwd"/>
+<input type="password" id="pwd" name="pwd" required/>
+<abbr title="password should contain atleast 3 capital letters, 2 small letters and 2 special characters and should not exceed 24 characters"><img src="help.png" style="width: 18px;"/></abbr>
 <span id="result"></span>
 </td>
 <td align="justify">
@@ -190,7 +197,7 @@ Password
 Confirm Password
 </td>
 <td align="left">
-<input type="password" id="cpwd" name="cpwd" onChange="checkPasswordMatch()"/>
+<input type="password" id="cpwd" name="cpwd" onChange="checkPasswordMatch()" required/>
 <br>
 <span id="cresult"></span></td>
 </tr>
@@ -199,7 +206,7 @@ Confirm Password
 D.O.B
 </td>
 <td align="left">
-<input type="date" id="date" name="date"/>
+<input type="date" id="date" name="date" required/>
 </td>
 </tr>
 <tr>
@@ -207,7 +214,7 @@ D.O.B
 D.O.B with time
 </td>
 <td align="left">
-<input type="datetime" id="datetime" name="datetime"/>
+<input type="datetime" id="datetime" name="datetime" required/>
 </td>
 </tr>
 <tr>
@@ -215,7 +222,7 @@ D.O.B with time
 Local D.O.B
 </td>
 <td align="left">
-<input type="datetime-local" id="local" name="local"/>
+<input type="datetime-local" id="local" name="local" required/>
 </td>
 </tr>
 <tr>
@@ -223,7 +230,7 @@ Local D.O.B
 SSN
 </td>
 <td align="left">
-<input type="text" id="ssn" name="ssn" pattern="^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$" placeholder="111-22-3333"/>
+<input type="text" id="ssn" name="ssn" pattern="^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$" placeholder="111-22-3333" required title="9 digit ssn in the format xxx-xx-xxxx"/>
 </td>
 </tr>
 <tr>
@@ -231,7 +238,7 @@ SSN
 Phone
 </td>
 <td align="left">
-<input type="text" id="phone" name="phone" pattern="\d{3}[\-]\d{3}[\-]\d{4}" placeholder="111-222-3333"/>
+<input type="text" id="phone" name="phone" pattern="\d{3}[\-]\d{3}[\-]\d{4}"  required title="10 digit phone number in the format xxx-xxx-xxxx" placeholder="111-222-3333"/>
 </td>
 </tr>
 <tr>
@@ -239,15 +246,16 @@ Phone
 Credit Card Number
 </td>
 <td align="left">
-<input type="text" id="cc" name="cc" pattern="\d{4}[\-]\d{4}[\-]\d{4}[\-]\d{4}" style="width: 140px;" placeholder="1111-2222-3333-4444"/>
+<input type="text" id="cc" name="cc" pattern="\d{4}[\-]\d{4}[\-]\d{4}[\-]\d{4}" style="width: 140px;" required title="16 digit Credit Card number in the format xxx-xxxx-xxxx-xxxx" placeholder="1111-2222-3333-4444"/>
 </td>
 </tr>
 <tr>
-<td colspan="2">
-<button id="goNow" name="goNow" onClick="goNow()">Create</button>
+<td colspan="2" align="center">
+<input type="submit" id="goNow" name="goNow" onClick="goNow()">
 </td>
 </tr>
 </table>
+</form>
 </body>
 
 </html>
