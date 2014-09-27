@@ -107,6 +107,7 @@ function goNow()
 		var dobtime = document.getElementById('datetime').value;
 		var localdob = document.getElementById('local').value;
 		var ccnumber = document.getElementById('cc').value;
+		var pwd = document.getElementById('pwd').value;
 		/*if(ccnumber==""||firstName == "" || lastName==""||email==""||phone==""||ssn==""||dobtime=="")
 		{
 			alert("All fields are Mandatory. Please enter all the values and try again");
@@ -137,6 +138,7 @@ function goNow()
 		  return;
 	  }*/
 		window.localStorage.setItem('firstName',firstName);
+		window.localStorage.setItem('password',pwd);
 		window.localStorage.setItem('lastName',lastName);
 		window.localStorage.setItem('email',email);
 		window.localStorage.setItem('phone',phone);
@@ -145,14 +147,13 @@ function goNow()
 		window.localStorage.setItem('dobtime',dobtime);
 		window.localStorage.setItem('localdob',localdob);
 		window.localStorage.setItem('ccnumber',ccnumber);
-		alert("Registration Successful")
 	}
 	</script>
 </head>
 
 <body>
 <h1 align="center">Registration</h1>
-<form id="reg">
+<form id="reg" onsubmit="goNow()" action="success.html">
 <table align="center">
 <tr>
 <td align="left" style="width: 200px;">
@@ -251,7 +252,7 @@ Credit Card Number
 </tr>
 <tr>
 <td colspan="2" align="center">
-<input type="submit" id="goNow" name="goNow" onClick="goNow()">
+<input type="submit">
 </td>
 </tr>
 </table>
