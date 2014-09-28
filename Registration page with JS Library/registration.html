@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Registration</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="modernizr.js"></script>
+<script src="jslibrary.js"></script>
+</head>
+
+<body>
+<h1 align="center">Registration</h1>
+<table align="center">
+<tr>
+<td align="left" style="width: 200px;">
+First Name
+</td>
+<td align="left">
+<input type="text" id="fn" name="fn" placeholder="first Name" required autofocus/>
+</td>
+</tr>
+<tr>
+<td align="left"  style="width: 200px;">
+Last Name
+</td>
+<td align="left">
+<input type="text" id="ln" name="ln" placeholder="Last Name" required/>
+</td>
+</tr>
+<tr>
+<td align="left"  style="width: 200px;">
+Email
+</td>
+<td align="left">
+<input type="email" id="email" name="email" placeholder="abc@xyz.com"  style="width: 140px;" required/>
+</td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+Password
+</td>
+<td align="left">
+<input type="password" id="pwd" name="pwd" required/>
+<abbr title="password should contain atleast 3 capital letters, 2 small letters and 2 special characters and should not exceed 24 characters"><img src="help.png" style="width: 18px;"/></abbr>
+<span id="result"></span>
+</td>
+<td align="justify">
+<span>
+<progress id="progress" value="0" max="100"/></span>
+</td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+Confirm Password
+</td>
+<td align="left">
+<input type="password" id="cpwd" name="cpwd" onChange="checkPasswordMatch()" required/>
+<br>
+<span id="cresult"></span></td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+D.O.B
+</td>
+<td align="left">
+<input type="date" id="date" name="date" required/>
+</td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+D.O.B with time
+</td>
+<td align="left">
+<input type="datetime" id="datetime" name="datetime" required/>
+</td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+Local D.O.B
+</td>
+<td align="left">
+<input type="datetime-local" id="local" name="local" required/>
+</td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+SSN
+</td>
+<td align="left">
+<input type="text" id="ssn" name="ssn" pattern="^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$" placeholder="111-22-3333" required title="9 digit ssn in the format xxx-xx-xxxx"/>
+</td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+Phone
+</td>
+<td align="left">
+<input type="text" id="phone" name="phone" pattern="\d{3}[\-]\d{3}[\-]\d{4}"  required title="10 digit phone number in the format xxx-xxx-xxxx" placeholder="111-222-3333"/>
+</td>
+</tr>
+<tr>
+<td align="left" style="width: 200px;">
+Credit Card Number
+</td>
+<td align="left">
+<input type="text" id="cc" name="cc" pattern="\d{4}[\-]\d{4}[\-]\d{4}[\-]\d{4}" style="width: 140px;" required title="16 digit Credit Card number in the format xxx-xxxx-xxxx-xxxx" placeholder="1111-2222-3333-4444"/>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<button name="goNow" id="goNow" onClick="goNow()">Register Me</button>
+</td>
+</tr>
+</table>
+</body>
+
+</html>
