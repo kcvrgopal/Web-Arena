@@ -6,17 +6,19 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="modernizr.js"></script>
 <script src="jslibrary.js"></script>
+
 </head>
 
 <body>
 <h1 align="center">Registration</h1>
+<form id="reg" onsubmit="goNow()">
 <table align="center">
 <tr>
 <td align="left" style="width: 200px;">
 First Name
 </td>
 <td align="left">
-<input type="text" id="fn" name="fn" placeholder="first Name" required autofocus/>
+<input type="text" id="fn" name="fn" placeholder="first Name"  autofocus/>
 </td>
 </tr>
 <tr>
@@ -24,7 +26,7 @@ First Name
 Last Name
 </td>
 <td align="left">
-<input type="text" id="ln" name="ln" placeholder="Last Name" required/>
+<input type="text" id="ln" name="ln" placeholder="Last Name" />
 </td>
 </tr>
 <tr>
@@ -32,7 +34,7 @@ Last Name
 Email
 </td>
 <td align="left">
-<input type="email" id="email" name="email" placeholder="abc@xyz.com"  style="width: 140px;" required/>
+<input type="email" id="email" name="email" placeholder="abc@xyz.com"  style="width: 140px;" />
 </td>
 </tr>
 <tr>
@@ -40,7 +42,7 @@ Email
 Password
 </td>
 <td align="left">
-<input type="password" id="pwd" name="pwd" required/>
+<input type="password" id="pwd" name="pwd" />
 <abbr title="password should contain atleast 3 capital letters, 2 small letters and 2 special characters and should not exceed 24 characters"><img src="help.png" style="width: 18px;"/></abbr>
 <span id="result"></span>
 </td>
@@ -54,7 +56,7 @@ Password
 Confirm Password
 </td>
 <td align="left">
-<input type="password" id="cpwd" name="cpwd" onChange="checkPasswordMatch()" required/>
+<input type="password" id="cpwd" name="cpwd" onChange="checkPasswordMatch()" />
 <br>
 <span id="cresult"></span></td>
 </tr>
@@ -63,7 +65,7 @@ Confirm Password
 D.O.B
 </td>
 <td align="left">
-<input type="date" id="date" name="date" required/>
+<input type="date" id="date" name="date" />
 </td>
 </tr>
 <tr>
@@ -71,7 +73,7 @@ D.O.B
 D.O.B with time
 </td>
 <td align="left">
-<input type="datetime" id="datetime" name="datetime" required/>
+<input type="datetime" id="datetime" name="datetime" />
 </td>
 </tr>
 <tr>
@@ -79,7 +81,7 @@ D.O.B with time
 Local D.O.B
 </td>
 <td align="left">
-<input type="datetime-local" id="local" name="local" required/>
+<input type="datetime-local" id="local" name="local" />
 </td>
 </tr>
 <tr>
@@ -87,7 +89,7 @@ Local D.O.B
 SSN
 </td>
 <td align="left">
-<input type="text" id="ssn" name="ssn" pattern="^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$" placeholder="111-22-3333" required title="9 digit ssn in the format xxx-xx-xxxx"/>
+<input type="text" id="ssn" name="ssn" placeholder="111-22-3333"  title="9 digit ssn in the format xxx-xx-xxxx"/>
 </td>
 </tr>
 <tr>
@@ -95,7 +97,7 @@ SSN
 Phone
 </td>
 <td align="left">
-<input type="text" id="phone" name="phone" pattern="\d{3}[\-]\d{3}[\-]\d{4}"  required title="10 digit phone number in the format xxx-xxx-xxxx" placeholder="111-222-3333"/>
+<input type="text" id="phone" name="phone" title="10 digit phone number in the format xxx-xxx-xxxx" placeholder="111-222-3333"/>
 </td>
 </tr>
 <tr>
@@ -103,15 +105,27 @@ Phone
 Credit Card Number
 </td>
 <td align="left">
-<input type="text" id="cc" name="cc" pattern="\d{4}[\-]\d{4}[\-]\d{4}[\-]\d{4}" style="width: 140px;" required title="16 digit Credit Card number in the format xxx-xxxx-xxxx-xxxx" placeholder="1111-2222-3333-4444"/>
+<input type="text" id="cc" name="cc" style="width: 140px;"  title="16 digit Credit Card number in the format xxx-xxxx-xxxx-xxxx" placeholder="1111-2222-3333-4444"/>
 </td>
 </tr>
 <tr>
-<td colspan="2" align="center">
-<button name="goNow" id="goNow" onClick="goNow()">Register Me</button>
+<td align="center">
+<!--<button name="goNow" id="goNow" onClick="goNow()">Register Me</button>-->
+<input type="submit" value="Register Me!">
 </td>
+<td align="center">
+<input type="reset" value="clear"></td>
 </tr>
-</table>
+<tr></tr>
+<tr>
+<td>
+Load from: <input type="button" value="localStorage" onClick="loadlocal()"/>
+</td>
+<td>
+<input type="button" name="session" value="sessionStorage" onClick="loadsession()"/>
+</td>
+</tr></table>
+</form>
 </body>
 
 </html>

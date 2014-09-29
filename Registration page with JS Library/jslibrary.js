@@ -1,6 +1,33 @@
 // JavaScript Library for Registration page
 $(document).ready(function()
 {
+	function updateConnectionStatus(msg, connected) {
+  if (!connected) {
+alert("You are offline. please connect to internet");
+  }
+}
+	window.addEventListener('load', function(e) {
+  if (navigator.onLine) {
+    updateConnectionStatus('Online', true);
+  } else {
+    updateConnectionStatus('Offline', false);
+  }
+}, false);
+	
+	window.addEventListener('online', function(e) {
+  console.log("Internet connection is back)");
+  updateConnectionStatus('Online', true);
+}, false);
+
+window.addEventListener('offline', function(e) {
+  console.log("trouble connecting to internet.");
+  updateConnectionStatus('Offline', false);
+}, false);
+
+
+	
+	
+	
 	if (Modernizr.localstorage) {
   alert("LocalStorage available");
 } else {
@@ -152,28 +179,16 @@ function goNow()
 		
 		readFromJSONString :  function (string) { return JSON.parse(string)}
 		};
-		
 	  if(regObj.allEntered()==0) return;
 	  if(regObj.isValidEmail()==0) return;
 	  if(regObj.isSSNFormatValid()==0) return;
 	  if(regObj.isPhoneNumberFormatValid()==0) return;
 	  if(regObj.isCCFormatValid()==0) return;
-	  
-	  saveToLocalStorage(regObj.email,regObj.toJSONString(regObj));
-	  var result = regObj.readFromJSONString(readFromLocalStorage(regObj.email));
-	  console.log(result);
-	  for(var k in result)
-	  {
-		console.log(k,result[k]);  
-	  }
-	  console.log("********");
-	  saveToSessionStorage(regObj.email,regObj.toJSONString(regObj));
-	  var sresult = regObj.readFromJSONString(readFromSessionStorage(regObj.email));
-	  console.log(sresult);
-	  for(var k in sresult)
-	  {
-		console.log(k,sresult[k]);  
-	  }
+	  var localKey = regObj.email+"_localStorage";
+	  var sessionKey = regObj.email+"_sessionStorage";
+	  saveToLocalStorage(localKey,regObj.toJSONString(regObj));
+	  saveToSessionStorage(sessionKey,regObj.toJSONString(regObj));
+	  var message  = "Your key for localStorage is \" "+localKey+" \" \n for sessionStorage is \" "+sessionKey+" \"";
 	}
 	
 	function saveToLocalStorage(key,obj)
@@ -192,3 +207,27 @@ function goNow()
 	{
 		return window.sessionStorage.getItem(key);
 	}
+	
+	function loadlocal()
+	{
+		 var loader = prompt("Please enter your key for localStorage");
+		 var result = JSON.stringify(readFromLocalStorage(loader));
+		 if(result=="")
+		 {
+			alert("Nothing here. Please check your key again.");	 
+		 }
+		 alert(result);
+	}
+	
+	function loadsession()
+	{
+		 var loader = prompt("Please enter your key for sessionStorage");
+		 var result = JSON.stringify(readFromSessionStorage(loader));
+		 console.log(result);
+		 if(result === null)
+		 {
+			alert("Nothing here. Please check your key again.");	 
+		 }
+		 alert(result);
+	}
+	
