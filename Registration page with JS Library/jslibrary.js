@@ -120,6 +120,7 @@ function goNow()
 		lastName : document.getElementById('ln').value,
 		email : document.getElementById('email').value,
 		phone : document.getElementById('phone').value,
+		url : document.getElementById('url').value,
 		ssn : document.getElementById('ssn').value,
 		dob : document.getElementById('date').value,
 		dobtime : document.getElementById('datetime').value,
@@ -128,7 +129,7 @@ function goNow()
 		pwd : document.getElementById('pwd').value,
 		
 		allEntered : function () { 
-		if(regObj.ccnumber==""||regObj.firstName == "" ||regObj. lastName==""||regObj.email==""||regObj.phone==""||regObj.ssn==""||regObj.dobtime=="")
+		if(regObj.ccnumber==""||regObj.firstName == "" ||regObj. lastName==""||regObj.email==""||regObj.phone==""||regObj.ssn==""||regObj.dobtime==""||regObj.url=="")
 		{
 			alert("All fields are Mandatory. Please enter all the values and try again");
 			return 0;
@@ -189,6 +190,7 @@ function goNow()
 	  saveToLocalStorage(localKey,regObj.toJSONString(regObj));
 	  saveToSessionStorage(sessionKey,regObj.toJSONString(regObj));
 	  var message  = "Your key for localStorage is \" "+localKey+" \" \n for sessionStorage is \" "+sessionKey+" \"";
+	  alert(message);
 	}
 	
 	function saveToLocalStorage(key,obj)
@@ -231,3 +233,7 @@ function goNow()
 		 alert(result);
 	}
 	
+	function printIt()
+	{
+		window.print() 	
+	}

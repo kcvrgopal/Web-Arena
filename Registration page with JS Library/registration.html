@@ -38,6 +38,14 @@ Email
 </td>
 </tr>
 <tr>
+<td align="left"  style="width: 200px;">
+URL
+</td>
+<td align="left">
+<input type="url" id="url" name="url" placeholder="https://www.about.me" />
+</td>
+</tr>
+<tr>
 <td align="left" style="width: 200px;">
 Password
 </td>
@@ -111,7 +119,7 @@ Credit Card Number
 <tr>
 <td align="center">
 <!--<button name="goNow" id="goNow" onClick="goNow()">Register Me</button>-->
-<input type="submit" value="Register Me!">
+<input type="button" onClick="goNow()" value="Register Me!">
 </td>
 <td align="center">
 <input type="reset" value="clear"></td>
@@ -124,7 +132,13 @@ Load from: <input type="button" value="localStorage" onClick="loadlocal()"/>
 <td>
 <input type="button" name="session" value="sessionStorage" onClick="loadsession()"/>
 </td>
-</tr></table>
+</tr>
+<tr>
+</tr>
+<tr>	
+<td colspan="2" align="center">
+<input type="button" value="print" onClick="printIt()"/>
+</td></table>
 </form>
 </body>
 
