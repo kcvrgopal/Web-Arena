@@ -1,0 +1,106 @@
+html
+    head
+        meta(charset='UTF-8')
+        title Registration
+        script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
+        script(type='text/javascript', src='http://cryptojs.altervista.org/api/functions_cryptography.js')
+        script(src='modernizr.js')
+        script(src='jslibrary.js')
+    body
+        h1(align='center') Registration
+        form#reg(onsubmit='test()')
+            table(align='center')
+                tr
+                    td(align='left', style='width: 200px;')
+                        | First Name
+                    td(align='left')
+                        input#fn(type='text', name='fn', placeholder='first Name', autofocus='autofocus')
+                tr
+                    td(align='left', style='width: 200px;')
+                        | Last Name
+                    td(align='left')
+                        input#ln(type='text', name='ln', placeholder='Last Name')
+                tr
+                    td(align='left', style='width: 200px;')
+                        | Email
+                    td(align='left')
+                        input#email(type='email', name='email', placeholder='abc@xyz.com', style='width: 140px;')
+                tr
+                    td(align='left', style='width: 200px;')
+                        | URL
+                    td(align='left')
+                        input#url(type='url', name='url', placeholder='https://www.about.me')
+                tr
+                    td(align='left', style='width: 200px;')
+                        | Password
+                    td(align='left')
+                        input#pwd(type='password', name='pwd')
+                        abbr(title='password should contain atleast 3 capital letters, 2 small letters and 2 special characters and should not exceed 24 characters')
+                            img(src='help.png', style='width: 18px;')
+                        span#result
+                    td(align='justify')
+                        span
+                            progress#progress(value='0', max='100')
+                tr
+                    td(align='left', style='width: 200px;')
+                        | Confirm Password
+                    td(align='left')
+                        input#cpwd(type='password', name='cpwd', onchange='checkPasswordMatch()')
+                        br
+                        span#cresult
+                tr
+                    td(align='left', style='width: 200px;')
+                        | D.O.B
+                    td(align='left')
+                        input#date(type='date', name='date')
+                tr
+                    td(align='left', style='width: 200px;')
+                        | D.O.B with time
+                    td(align='left')
+                        input#datetime(type='datetime', name='datetime')
+                tr
+                    td(align='left', style='width: 200px;')
+                        | Local D.O.B
+                    td(align='left')
+                        input#local(type='datetime-local', name='local')
+                tr
+                    td(align='left', style='width: 200px;')
+                        | SSN
+                    td(align='left')
+                        input#ssn(type='text', name='ssn', placeholder='111-22-3333', title='9 digit ssn in the format xxx-xx-xxxx')
+                tr
+                    td(align='left', style='width: 200px;')
+                        | Phone
+                    td(align='left')
+                        input#phone(type='text', name='phone', title='10 digit phone number in the format xxx-xxx-xxxx', placeholder='111-222-3333')
+                tr
+                    td(align='left', style='width: 200px;')
+                        | Credit Card Number
+                    td(align='left')
+                        input#cc(type='text', name='cc', style='width: 140px;', title='16 digit Credit Card number in the format xxx-xxxx-xxxx-xxxx', placeholder='1111-2222-3333-4444')
+                tr
+                    td(align='center')
+                        //
+                          <button name="goNow" id="goNow" onClick="goNow()">Register Me</button>
+                        input(type='button', onclick='goNow()', value='Register Me!')
+                    td(align='center')
+                        input(type='reset', value='clear')
+                tr
+                tr
+                    td
+                        | Load from:
+                        input(type='button', value='localStorage', onclick='loadlocal()')
+                    td
+                        input(type='button', name='session', value='sessionStorage', onclick='loadsession()')
+                tr
+                    td(colspan='2', align='center')
+                        | Prove that You are a human. Drag and Drop 3 Puppy images below
+                tr(style='width: 300px; height: 250px;')
+                    td(colspan='2', align='center')
+                        #dropLocation(ondragover="dragEnter(event)", ondrop="dragDrop(event)", style="text-align: center;width:350px;height:250px;padding:10px;border:1px solid #aaaaaa;")
+            div(align='center')
+                img#p1(ondragstart='dragStart(event)', draggable='true', src='./images/puppy2.jpg', width='97', height='90', alt='')
+                img#c1(ondragstart='dragStart(event)', draggable='true', src='./images/cat1.jpeg', width='98', height='94', alt='')
+                img#p2(ondragstart='dragStart(event)', draggable='true', src='./images/puppy1.jpg', width='129', height='93', alt='')
+                img#c2(ondragstart='dragStart(event)', draggable='true', src='./images/cat2.jpeg', width='117', height='96', alt='')
+                img#p3(ondragstart='dragStart(event)', draggable='true', src='./images/puppy3.jpg', width='106', height='97', alt='')

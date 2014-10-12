@@ -1,0 +1,197 @@
+  <!doctype html>
+  <html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Registration</title>
+    <style>
+    #dropLocation {width:350px;height:200px;padding:10px;border:1px solid #aaaaaa; }
+    </style>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="modernizr.js"></script>
+  <script src="jslibrary.js"></script>
+  <script type="text/javascript">
+  var count=0;
+  var pcount=0;
+  function dragStart(ev) {
+     ev.dataTransfer.setData("Text", ev.target.getAttribute('id'));
+  }
+  function dragEnter(ev) {
+     event.preventDefault();
+  
+  }
+  
+  function dragDrop(ev) {
+            ev.preventDefault();
+            if(count<3)
+            {
+     var src = ev.dataTransfer.getData("Text");
+     if(src.indexOf("p")>-1)
+     {
+         pcount++;
+     }
+     ev.target.appendChild(document.getElementById(src));
+     ev.stopPropagation();
+     count++;
+            }
+            else
+            {
+                alert("You have already put 3 images");
+            }
+  }
+  
+  function test()
+  {
+      goNow(pcount);	
+  }
+  </script>
+  </head>
+  
+  <body>
+  <h1 align="center">Registration</h1>
+  <form id="reg" onsubmit="test()">
+    <table align="center">
+    <tr>
+  <td align="left" style="width: 200px;">
+  First Name
+  </td>
+  <td align="left">
+  <input type="text" id="fn" name="fn" placeholder="first Name"  autofocus/>
+  </td>
+  </tr>
+  <tr>
+  <td align="left"  style="width: 200px;">
+  Last Name
+  </td>
+  <td align="left">
+  <input type="text" id="ln" name="ln" placeholder="Last Name" />
+  </td>
+  </tr>
+  <tr>
+  <td align="left"  style="width: 200px;">
+  Email
+  </td>
+  <td align="left">
+  <input type="email" id="email" name="email" placeholder="abc@xyz.com"  style="width: 140px;" />
+  </td>
+  </tr>
+  <tr>
+  <td align="left"  style="width: 200px;">
+  URL
+  </td>
+  <td align="left">
+  <input type="url" id="url" name="url" placeholder="https://www.about.me" />
+  </td>
+  </tr>
+  <tr>
+  <td align="left" style="width: 200px;">
+  Password
+  </td>
+  <td align="left">
+  <input type="password" id="pwd" name="pwd" />
+  <abbr title="password should contain atleast 3 capital letters, 2 small letters and 2 special characters and should not exceed 24 characters"><img src="help.png" style="width: 18px;"/></abbr>
+  <span id="result"></span>
+  </td>
+  <td align="justify">
+  <span>
+  <progress id="progress" value="0" max="100"/></span>
+  </td>
+  </tr>
+  <tr>
+  <td align="left" style="width: 200px;">
+  Confirm Password
+  </td>
+  <td align="left">
+  <input type="password" id="cpwd" name="cpwd" onChange="checkPasswordMatch()" />
+  <br>
+  <span id="cresult"></span></td>
+  </tr>
+  <tr>
+  <td align="left" style="width: 200px;">
+  D.O.B
+  </td>
+  <td align="left">
+  <input type="date" id="date" name="date" />
+  </td>
+  </tr>
+  <tr>
+  <td align="left" style="width: 200px;">
+  D.O.B with time
+  </td>
+  <td align="left">
+  <input type="datetime" id="datetime" name="datetime" />
+  </td>
+  </tr>
+  <tr>
+  <td align="left" style="width: 200px;">
+  Local D.O.B
+  </td>
+  <td align="left">
+  <input type="datetime-local" id="local" name="local" />
+  </td>
+  </tr>
+  <tr>
+  <td align="left" style="width: 200px;">
+  SSN
+  </td>
+  <td align="left">
+  <input type="text" id="ssn" name="ssn" placeholder="111-22-3333"  title="9 digit ssn in the format xxx-xx-xxxx"/>
+  </td>
+  </tr>
+  <tr>
+  <td align="left" style="width: 200px;">
+  Phone
+  </td>
+  <td align="left">
+  <input type="text" id="phone" name="phone" title="10 digit phone number in the format xxx-xxx-xxxx" placeholder="111-222-3333"/>
+  </td>
+  </tr>
+  <tr>
+  <td align="left" style="width: 200px;">
+  Credit Card Number
+  </td>
+  <td align="left">
+  <input type="text" id="cc" name="cc" style="width: 140px;"  title="16 digit Credit Card number in the format xxx-xxxx-xxxx-xxxx" placeholder="1111-2222-3333-4444"/>
+  </td>
+  </tr>
+  <tr>
+  <td align="center">
+  <!--<button name="goNow" id="goNow" onClick="goNow()">Register Me</button>-->
+  <input type="button" onClick="goNow()" value="Register Me!">
+  </td>
+  <td align="center">
+  <input type="reset" value="clear"></td>
+  </tr>
+  <tr></tr>
+  <tr>
+  <td>
+  Load from: <input type="button" value="localStorage" onClick="loadlocal()"/>
+  </td>
+  <td>
+  <input type="button" name="session" value="sessionStorage" onClick="loadsession()"/>
+  </td>
+  </tr>
+  <tr>
+  <td colspan="2" align="center">
+  Prove that You are a human. Drag and Drop 3 Puppy images below
+  </td>
+  </tr>
+  <tr style="
+      width: 300px;
+      height: 250px;
+  ">
+  <td colspan="2" align="center">
+  <div align="center" id="dropLocation" ondragover="dragEnter(event)"
+       ondrop="dragDrop(event)"
+       ></div>
+  </td>
+  </tr></table>
+  <div align="center">
+  <img id="p1" ondragstart="dragStart(event)" draggable="true" src="./images/puppy2.jpg" width="97" height="90" alt=""/> 
+   <img id="c1" ondragstart="dragStart(event)" draggable="true" src="./images/cat1.jpeg" width="98" height="94" alt=""/>  
+    <img id="p2" ondragstart="dragStart(event)" draggable="true" src="./images/puppy1.jpg" width="129" height="93" alt=""/> 
+    <img id="c2" ondragstart="dragStart(event)"  draggable="true" src="./images/cat2.jpeg" width="117" height="96" alt=""/> 
+     <img id="p3" ondragstart="dragStart(event)"  draggable="true"src="./images/puppy3.jpg" width="106" height="97" alt=""/></div>
+  </form>
+  </body>
+  
+  </html>
