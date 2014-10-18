@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Marks Submitter</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script language="JavaScript">
+        function submitter()
+        {
+            var quiz1 = document.getElementById('quiz1').value;
+            var quiz2 = document.getElementById('quiz2').value;
+            var mid1 = document.getElementById('mid1').value;
+            var connection = new WebSocket('ws://localhost:1234',"echo-protocol");
+            connection.onopen = function()
+            {
+                var myDiv = document.getElementById('content');
+                myDiv.innerHTML+='<i>connection opened</i>'+'<br>';
+                myDiv.innerHTML+='Sending Marks'+'<br>';
+                connection.send(quiz1+'|'+quiz2+'|'+mid1);
+                myDiv.innerHTML+='Marks sent'+'<br>';
+            }
+            connection.onmessage = function(msg)
+            {
+                var myDiv = document.getElementById('content');
+                myDiv.innerHTML+='<b>Message received: '+msg.data+'</b><br>';
+            }
+            connection.onerror = function(error)
+            {
+                var myDiv = document.getElementById('content');
+                myDiv.innerHTML+='<em> Error : '+error+'</em><br>';
+            }
+            connection.onclose = function()
+            {
+                var myDiv = document.getElementById('content');
+                myDiv.innerHTML+='<i>connection closed</i>'+'<br>';
+            }
+        }
+        function updater(obj)
+        {
+            document.getElementById(obj+"val").innerText = document.getElementById(obj).value;
+        }
+    </script>
+</head>
+<body bgcolor="#132fff">
+<br>
+<br>
+<div class="container-fluid" style="
+    width: 700px;
+" value="0">
+<div class="panel panel-default" >
+    <div align="center" class="panel-body">
+        Grade the Examinations
+    </div>
+</div>
+
+    <br>
+    <br>
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <td align="right">
+                       Quiz 1 Score :
+                </td>
+                <td align="left">
+                    <input onchange="updater('quiz1')" id="quiz1" type="range" min="0" max="100" style="
+    width: 250px;
+" value="0"/>
+                </td>
+                <td align="left">
+                    <span id="quiz1val">2</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    Quiz 2 Score :
+                </td>
+                <td align="left">
+                    <input onchange="updater('quiz2')" id="quiz2" type="range" min="0" max="100" style="
+    width: 250px;
+" value="0"/>
+                </td>
+                <td align="left">
+                    <span id="quiz2val">2</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    Mid 1 Score :
+                </td>
+                <td align="left">
+                    <input onchange="updater('mid1')" id="mid1" type="range" min="0" max="100" style="
+    width: 250px;
+" value="0"/>
+                </td>
+                <td align="left">
+                    <span id="mid1val">2</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><button onclick="submitter()" type="button" class="btn btn-success">Grade</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+<div align="center" id="content"></div>
+</div>
+</body>
+</html>
