@@ -10,12 +10,13 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script language="JavaScript">
+        var connection;
         function submitter()
         {
             var quiz1 = document.getElementById('quiz1').value;
             var quiz2 = document.getElementById('quiz2').value;
             var mid1 = document.getElementById('mid1').value;
-            var connection = new WebSocket('ws://localhost:1234',"echo-protocol");
+            connection = new WebSocket('ws://localhost:1234',"echo-protocol");
             connection.onopen = function()
             {
                 var myDiv = document.getElementById('content');
@@ -43,6 +44,11 @@
         function updater(obj)
         {
             document.getElementById(obj+"val").innerText = document.getElementById(obj).value;
+        }
+        function canceller()
+        {
+            if(connection!=undefined||connection!=null) connection.close();
+            window.location.reload();
         }
     </script>
 </head>
@@ -72,7 +78,7 @@
 " value="0"/>
                 </td>
                 <td align="left">
-                    <span id="quiz1val">2</span>
+                    <span id="quiz1val">0</span>
                 </td>
             </tr>
             <tr>
@@ -85,7 +91,7 @@
 " value="0"/>
                 </td>
                 <td align="left">
-                    <span id="quiz2val">2</span>
+                    <span id="quiz2val">0</span>
                 </td>
             </tr>
             <tr>
@@ -98,12 +104,17 @@
 " value="0"/>
                 </td>
                 <td align="left">
-                    <span id="mid1val">2</span>
+                    <span id="mid1val">0</span>
                 </td>
             </tr>
             <tr>
-                <td align="center" colspan="2"><button onclick="submitter()" type="button" class="btn btn-success">Grade</button>
+                <td style="
+    width: 250px;
+" align="right"><button onclick="submitter()" type="button" class="btn btn-success">Grade</button>
                 </td>
+                <td colspan="2" align="center">
+                    <button onclick="canceller()" type="button" class="btn btn-danger">Cancel</button></td>
+
             </tr>
         </table>
     </div>
