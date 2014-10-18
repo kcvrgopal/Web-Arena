@@ -3,12 +3,57 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <!-- Bootstrap -->
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script src="js/sourcescript.js"></script>
+    <script language="javascript">
+        console.log(google);
+        </script>
+        <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script language="javascript">
+        function displayGraph()
+        {
+            var data = [];
+            var chicken = document.getElementById('chicken').value;
+            var pork = document.getElementById('pork').value;
+            var ham = document.getElementById('ham').value;
+            var bacon = document.getElementById('bacon').value;
+            var beef = document.getElementById('beef').value;
+
+            var jalapenos = document.getElementById('jalapenos').value;
+            var onions = document.getElementById('onions').value;
+            var redpepper = document.getElementById('redpepper').value;
+            var greenpepper = document.getElementById('greenpepper').value;
+            var bananapepper = document.getElementById('bananapepper').value;
+            var artichokes = document.getElementById('artichokes').value;
+            var mushrooms = document.getElementById('mushrooms').value;
+            var olives = document.getElementById('olives').value;
+            var tomatoes = document.getElementById('tomatoes').value;
+            var garlic = document.getElementById('garlic').value;
+
+            if(parseInt(chicken)!=0) data.push(new Array("chicken", parseInt(chicken)));
+            if(parseInt(pork)!=0) data.push(new Array("pork",parseInt(pork)));
+            if(parseInt(ham)!=0) data.push(new Array("ham",parseInt(ham)));
+            if(parseInt(bacon)!=0) data.push(new Array("bacon",parseInt(bacon)));
+            if(parseInt(beef)!=0) data.push(new Array("beef",parseInt(beef)));
+            if(parseInt(jalapenos)!=0) data.push(new Array("jalapenos",parseInt(jalapenos)));
+            if(parseInt(redpepper)!=0) data.push(new Array("redpepper",parseInt(redpepper)));
+            if(parseInt(greenpepper)!=0) data.push(new Array("greenpepper",parseInt(greenpepper)));
+            if(parseInt(bananapepper)!=0) data.push(new Array("bananapepper",parseInt(bananapepper)));
+            if(parseInt(olives)!=0) data.push(new Array("olives",parseInt(olives)));
+            if(parseInt(tomatoes)!=0) data.push(new Array("tomatoes",parseInt(tomatoes)));
+            if(parseInt(garlic)!=0) data.push(new Array("garlic",parseInt(garlic)));
+            if(parseInt(onions)!=0) data.push(new Array("onions",parseInt(onions)));
+            if(parseInt(artichokes)!=0) data.push(new Array("artichokes", parseInt(artichokes)));
+            if(parseInt(mushrooms)!=0) data.push(new Array("mushrooms", parseInt(mushrooms)));
+            visualize(data);
+        }
+
+    </script>
 </head>
 <body>
 <br>
@@ -112,7 +157,7 @@ Chicken: <input id="chicken" type="range" min="0" max="100" style="
                 </td>
                 <td align="left">
 
-                    <button onclick="displayGraph()" class="btn btn-danger"/> Cancel </button>
+                    <button onclick="canceller()" class="btn btn-danger"/> Cancel </button>
 
                 </td>
 
@@ -120,7 +165,14 @@ Chicken: <input id="chicken" type="range" min="0" max="100" style="
 
 
         </table>
+
+    </div>
+    <div>
+            <div align="left" id="piechart" style="width: 900px; height: 500px;"></div>
+
+            <div align="right" id="donutchart" style="width: 900px; height: 500px;"></div>
     </div>
 </div>
+
 </body>
 </html>
