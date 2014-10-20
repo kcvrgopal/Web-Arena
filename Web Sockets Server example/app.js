@@ -72,7 +72,5 @@ var wsServer = new WebSocketServer({
             console.log(message.utf8Data);
             connection.sendUTF("Received scores : "+message.utf8Data+"<br> Exams Graded");
         });
-
-
     });
 module.exports = app;

@@ -16,13 +16,23 @@
             var quiz1 = document.getElementById('quiz1').value;
             var quiz2 = document.getElementById('quiz2').value;
             var mid1 = document.getElementById('mid1').value;
+            var gradePoints = parseInt(quiz1)/4 + parseInt(quiz2)/4 + parseInt(mid1)/2;
+            var grade;
+            if(gradePoints>90) grade = "A";
+            else if(gradePoints>80) grade = "B";
+            else if(gradePoints>70) grade = "C";
+            else if(gradePoints>60) grade = "D";
+            else if(gradePoints>50) grade = "E";
+            else grade = "F";
+            var gradeDiv = document.getElementById('grade');
+            gradeDiv.innerHTML = '<hr><span id="gradeSpan">'+grade+'</span>'
             connection = new WebSocket('ws://localhost:1234',"echo-protocol");
             connection.onopen = function()
             {
                 var myDiv = document.getElementById('content');
                 myDiv.innerHTML+='<i>connection opened</i>'+'<br>';
                 myDiv.innerHTML+='Sending Marks'+'<br>';
-                connection.send(quiz1+'|'+quiz2+'|'+mid1);
+                connection.send(quiz1+'|'+quiz2+'|'+mid1+'|'+grade);
                 myDiv.innerHTML+='Marks sent'+'<br>';
             }
             connection.onmessage = function(msg)
@@ -33,7 +43,7 @@
             connection.onerror = function(error)
             {
                 var myDiv = document.getElementById('content');
-                myDiv.innerHTML+='<em> Error : '+error+'</em><br>';
+                myDiv.innerHTML+='<em> Error : '+error.message+'</em><br>';
             }
             connection.onclose = function()
             {
@@ -52,13 +62,16 @@
         }
     </script>
 </head>
-<body bgcolor="#132fff">
+<body style="background-color: #a9a9a9">
+<br>
+<br>
 <br>
 <br>
 <div class="container-fluid" style="
     width: 700px;
-" value="0">
-<div class="panel panel-default" >
+background-color: #d3d3d3;outline: 2px solid green;" value="0" style="background-color: #d3d3d3" >
+    <br>
+<div class="panel panel-default" style="background-color: #a9a9a9">
     <div align="center" class="panel-body">
         Grade the Examinations
     </div>
@@ -105,6 +118,9 @@
                 </td>
                 <td align="left">
                     <span id="mid1val">0</span>
+                    <div align="center" id="grade">
+
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -114,7 +130,6 @@
                 </td>
                 <td colspan="2" align="center">
                     <button onclick="canceller()" type="button" class="btn btn-danger">Cancel</button></td>
-
             </tr>
         </table>
     </div>
