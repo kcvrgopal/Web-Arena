@@ -15,6 +15,17 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script language="javascript">
+        function pizzaSelected()
+        {
+            if($('input[type=radio]:checked').size() > 0)
+            {
+                window.location.href = "#toppings";
+            }
+            else
+            {
+                alert("Select at least one pizza");
+            }
+        }
         function displayGraph()
         {
             var data = [];
@@ -55,36 +66,126 @@
 
     </script>
 </head>
-<body>
+<body style="background-color: #000000">
 <br>
 <br>
 <br>
 <div class="container-fluid" style="
-    width: 900px;
-">
+    width: 900px;background-color: #FAF0E6;outline: 2px solid green;">
+    <br>
+    <div class="jumbotron">
+        <h1>Delicafe's Speciality Pizza</h1>
+        </div>
     <ul class="breadcrumb">
         <li><a href="#">Home</a></li>
-        <li><a href="#">Cheese</a></li>
-        <li class="active">Toppings</li>
+        <li><a href="#toppings">Toppings</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
     </ul>
+    <br>
     <marquee><span class="text-info" > Offer just for you. Select unlimited toppings when you order online today</span></marquee>
-
-
-</div>
-
 <br>
-<div class="container-fluid"style="
-    width: 900px;
-" value="0">
+<br>
 
-    <div align="center" class="table-responsive">
+    <div id="home" align="center">
+        <div id="pizzahome" align="center" class="table-responsive" style="height: 900px;">
+            <form id="pizza" role="form">
+            <table class="table-responsive">
+                <tr>
+                    <td valign="top" style="
+    width: 300px;
+">                Delicafe spl hand tossed
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="1s" id="1s" value="option1" >
+S                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="1m" id="1m" value="option1" >
+M                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="1l" id="1l" value="option1" >
+L                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="1xl" id="1xl" value="option1" >
+XL                                </label>
+                            </div>
+                </td>
+                    <td valign="top" style="
+    width: 300px;
+">
+                Delicafe spl home made pan
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="2s" id="2s" value="option1" >
+                                    S                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="2m" id="2m" value="option1" >
+                                    M                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="2l" id="2l" value="option1" >
+                                    L                                </label>
+                            </div>
+                    </td>
+
+                    <td valign="top" style="
+    width: 300px;
+">
+                Deli thick crust
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="3l" id="3l" value="option1" >
+                                    L                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="3xl" id="3xl" value="option1" >
+                                    XL                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="3xxl" id="3xxl" value="option1" >
+                                    XL                                </label>
+                            </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div class="checkbox" align="center">
+                            <label>
+                                <input type="checkbox" name="cheese" value="cheese" >
+                                Like Extra Cheese                                </label>
+                        </div>
+                    </td>
+                    </tr>
+                <tr>
+
+                    <td colspan="3" align="right">
+                        <button onclick="pizzaSelected()" class="btn btn-success"> Next >> </button>
+&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
+                    </td>
+                </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div id="toppings" align="center" class="table-responsive">
+        <br>
         <table class="table-responsive">
             <tr>
             <td valign="top" style="
     width: 450px;
 ">
 Chicken: <input id="chicken" type="range" min="0" max="100" style="
-    width: 150px;
+    width: 175px;
 " value="0"/>
                 <br>
                 Pork     <input  id="pork" type="range" min="0" max="100" style="
@@ -153,10 +254,13 @@ Chicken: <input id="chicken" type="range" min="0" max="100" style="
 </tr>
             <tr>
                 <td align="right">
-                    <button onclick="displayGraph()" class="btn btn-success"> Visualize </button>
+                    <br>
+                    <a href="#dashboard"><button onclick="displayGraph()" class="btn btn-success"> Preview </button></a>
+                    &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
                 </td>
                 <td align="left">
-
+                    <br>
+                    &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
                     <button onclick="canceller()" class="btn btn-danger"/> Cancel </button>
 
                 </td>
@@ -165,13 +269,13 @@ Chicken: <input id="chicken" type="range" min="0" max="100" style="
 
 
         </table>
+        <div id="dashboard" >
+            <div align="left" id="piechart" style="width: 850px; height: 500px;"></div>
 
+            <div align="right" id="donutchart" style="width: 850px; height: 500px;"></div>
+        </div>
     </div>
-    <div>
-            <div align="left" id="piechart" style="width: 900px; height: 500px;"></div>
 
-            <div align="right" id="donutchart" style="width: 900px; height: 500px;"></div>
-    </div>
 </div>
 
 </body>

@@ -3,7 +3,6 @@
  */
 function visualize(data1) {
     google.load('visualization', '1.0',{ callback: function() { drawChart(data1)} , 'packages':['piechart','corechart']});    //google.setOnLoadCallback(drawChart);
-
 }
 
 function drawChart(data) {
@@ -19,12 +18,14 @@ function drawChart(data) {
 
     var options = {
         title: 'Your Pizza Constituents',
-        is3D: true
+        is3D: true,
+        backgroundColor: "#FAF0E6"
     };
 
     var optionsDonut = {
         title: 'Your Pizza Constituents',
-        pieHole: 0.4
+        pieHole: 0.4,
+        backgroundColor: "#FAF0E6"
     };
 
 
@@ -32,4 +33,5 @@ function drawChart(data) {
     var donutChart = new google.visualization.PieChart(document.getElementById('donutchart'));
     chart.draw(data1, options);
     donutChart.draw(data1, optionsDonut);
+
 }
