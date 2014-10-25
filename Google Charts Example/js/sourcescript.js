@@ -47,6 +47,6 @@ function drawChart(data) {
             borderFactor: 0.05
         };
         diffChart.draw(diffData, options);
-        window.localStorage.setItem("oldToppings", JSON.stringify(newData));
     }
+    window.localStorage.setItem("oldToppings", JSON.stringify(newData));
 }
