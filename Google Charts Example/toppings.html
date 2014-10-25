@@ -63,7 +63,17 @@
             if(parseInt(mushrooms)!=0) data.push(new Array("mushrooms", parseInt(mushrooms)));
             visualize(data);
         }
-
+        function NavClicked(ev,to)
+        {
+            if($('input[type=radio]:checked').size() > 0)
+            {
+                window.location.href = "#"+to;
+            }
+            else
+            {
+                ev.preventDefault();
+            }
+        }
     </script>
 </head>
 <body style="background-color: #5D5D5D">
@@ -78,8 +88,8 @@
         </div>
     <ul class="breadcrumb">
         <li><a href="#">Home</a></li>
-        <li><a href="#toppings">Toppings</a></li>
-        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a onclick="NavClicked(event,'toppings')" href="#toppings">Toppings</a></li>
+        <li><a onclick="NavClicked(event,'dashboard')" href="#dashboard" aria-disabled="true">Dashboard</a></li>
     </ul>
     
     <marquee><span class="text-info" > Offer just for you. Select unlimited toppings when you order online today</span></marquee>
@@ -88,7 +98,7 @@
 
     <div id="home" align="center">
         <div id="pizzahome" align="center" class="table-responsive" style="height: 900px;">
-            <form id="pizza" role="form">
+            <!--<form id="pizza" role="form">-->
             <table class="table-responsive">
                 <tr>
                     <td valign="top" style="
@@ -96,22 +106,22 @@
 ">                Delicafe spl hand tossed
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="1s" id="1s" value="option1" >
+                                    <input type="radio" name="pizzasize" id="1s" value="option1" >
 S                                </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="1m" id="1m" value="option1" >
+                                    <input type="radio" name="pizzasize" id="1m" value="option1" >
 M                                </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="1l" id="1l" value="option1" >
+                                    <input type="radio" name="pizzasize" id="1l" value="option1" >
 L                                </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="1xl" id="1xl" value="option1" >
+                                    <input type="radio" name="pizzasize" id="1xl" value="option1" >
 XL                                </label>
                             </div>
                 </td>
@@ -121,17 +131,17 @@ XL                                </label>
                 Delicafe spl home made pan
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="2s" id="2s" value="option1" >
+                                    <input type="radio" name="pizzasize" id="2s" value="option1" >
                                     S                                </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="2m" id="2m" value="option1" >
+                                    <input type="radio" name="pizzasize" id="2m" value="option1" >
                                     M                                </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="2l" id="2l" value="option1" >
+                                    <input type="radio" name="pizzasize" id="2l" value="option1" >
                                     L                                </label>
                             </div>
                     </td>
@@ -142,17 +152,17 @@ XL                                </label>
                 Deli thick crust
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="3l" id="3l" value="option1" >
+                                    <input type="radio" name="pizzasize" id="3l" value="option1" >
                                     L                                </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="3xl" id="3xl" value="option1" >
+                                    <input type="radio" name="pizzasize" id="3xl" value="option1" >
                                     XL                                </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="3xxl" id="3xxl" value="option1" >
+                                    <input type="radio" name="pizzasize" id="3xxl" value="option1" >
                                     XL                                </label>
                             </div>
                     </td>
@@ -174,7 +184,7 @@ XL                                </label>
                     </td>
                 </tr>
                 </table>
-            </form>
+            <!--</form>-->
         </div>
     </div>
     <div id="toppings" align="center" class="table-responsive">
@@ -184,66 +194,66 @@ XL                                </label>
             <td valign="top" style="
     width: 450px;
 ">
-Chicken: <input id="chicken" type="range" min="0" max="100" style="
+Chicken: <input id="chicken" type="range" min="0" max="3" style="
     width: 175px;
 " value="0"/>
                 <br>
-                Pork     <input  id="pork" type="range" min="0" max="100" style="
+                Pork     <input  id="pork" type="range" min="0" max="3" style="
     width: 175px;
 " value="0"/>
                 <br>
-                Ham     <input  id="ham" type="range" min="0" max="100" style="
+                Ham     <input  id="ham" type="range" min="0" max="3" style="
     width: 175px;
 " value="0"/>
                 <br>
-                Bacon     <input  id="bacon" type="range" min="0" max="100" style="
+                Bacon     <input  id="bacon" type="range" min="0" max="3" style="
     width: 175px;
 " value="0"/>
                 <br>
-                Beef     <input id="beef" type="range" min="0" max="100" style="
+                Beef     <input id="beef" type="range" min="0" max="3" style="
     width: 175px;
 " value="0"/>
             </td>
             <td valign="top" style="
     width: 450px;
 ">
-                Jalapenos     <input id="jalapenos" type="range" min="0" max="100" style="
+                Jalapenos     <input id="jalapenos" type="range" min="0" max="3" style="
     width: 175px;
 " value="0"/>
                 <br>
-                Onions     <input id="onions" type="range" min="0" max="100" style="
+                Onions     <input id="onions" type="range" min="0" max="3" style="
     width: 175px;
 " value="0"/>
                 <br>
-                Roasted Red Pepper     <input id="redpepper" type="range" min="0" max="100" style="
+                Roasted Red Pepper     <input id="redpepper" type="range" min="0" max="3" style="
     width: 175px;
 " value="0"/>
                 <br>
-                Green Pepper     <input id="greenpepper" type="range" min="0" max="100" style="
+                Green Pepper     <input id="greenpepper" type="range" min="0" max="3" style="
     width: 175px;
 " value="0"/>
                 <br>
-                Banana Pepper     <input id="bananapepper" type="range" min="0" max="100" style="
+                Banana Pepper     <input id="bananapepper" type="range" min="0" max="3" style="
     width: 175px;
 " value="0"/>
                 <br>
-                Artichokes     <input id="artichokes" type="range" min="0" max="100" style="
+                Artichokes     <input id="artichokes" type="range" min="0" max="3" style="
     width: 175px;
 " value="0"/>
                 <br>
-                Mushrooms     <input id="mushrooms" type="range" min="0" max="100" style="
+                Mushrooms     <input id="mushrooms" type="range" min="0" max="3" style="
     width: 175px;
 " value="0"/>
                 <br>
-                Black Olives     <input id="olives" type="range" min="0" max="100" style="
+                Black Olives     <input id="olives" type="range" min="0" max="3" style="
     width: 175px;
 " value="0"/>
                 <br>
-                Diced Tomatoes     <input id="tomatoes" type="range" min="0" max="100" style="
+                Diced Tomatoes     <input id="tomatoes" type="range" min="0" max="3" style="
     width: 175px;
 " value="0"/>
                 <br>
-                Roasted Garlic     <input id="garlic" type="range" min="0" max="100" style="
+                Roasted Garlic     <input id="garlic" type="range" min="0" max="3" style="
     width: 175px;
 " value="0"/>
                 <br>
@@ -273,6 +283,9 @@ Chicken: <input id="chicken" type="range" min="0" max="100" style="
             <div align="left" id="piechart" style="width: 850px; height: 500px;"></div>
 
             <div align="right" id="donutchart" style="width: 850px; height: 500px;"></div>
+
+            <div align="right" id="diffchart" style="width: 850px; height: 500px;"></div>
+
         </div>
     </div>
 

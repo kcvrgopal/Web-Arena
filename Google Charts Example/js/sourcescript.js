@@ -33,5 +33,20 @@ function drawChart(data) {
     var donutChart = new google.visualization.PieChart(document.getElementById('donutchart'));
     chart.draw(data1, options);
     donutChart.draw(data1, optionsDonut);
-
+    var oldToppings = window.localStorage.getItem("oldToppings");
+    if(oldToppings!=null)
+    {
+        var diffChart = new google.visualization.PieChart(document.getElementById('diffchart'));
+        var old1 = google.visualization.arrayToDataTable(JSON.parse(oldToppings));
+        var diffData = diffChart.computeDiff(old1, data1);
+        var options = {
+            title: 'Your Pizza Constituents',
+            is3D: true,
+            backgroundColor: "#FAF0E6",
+            opacity: 0.8,
+            borderFactor: 0.05
+        };
+        diffChart.draw(diffData, options);
+        window.localStorage.setItem("oldToppings", JSON.stringify(newData));
+    }
 }
